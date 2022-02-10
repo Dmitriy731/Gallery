@@ -1,0 +1,8 @@
+.dark-theme {
+    --main-color:black;
+    --two-color: white;
+  }
+.light-theme {
+    --main-color: white;
+    --two-color: black;
+  }
