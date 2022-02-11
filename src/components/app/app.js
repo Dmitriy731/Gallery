@@ -51,6 +51,7 @@ const App = (props) => {
 
   useEffect(() => { 
     searchEmp()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[gallery, onSearchName, onSearchAutor, onSearchLocation, onSearchFrom, onSearchBefore]);
 
   // Поиск по названию
@@ -93,7 +94,6 @@ const App = (props) => {
   const firstPage = () => setCurrentPage( prev => (prev = 1))
   const lastPage = () => setCurrentPage( prev => prev = (Math.ceil((gallery.length)/countriesPerPage)))
   const totalPage = (Math.ceil(gallery.length/countriesPerPage))
-
 
   const onThemeChange = () => {
     setToggle(!toggle);

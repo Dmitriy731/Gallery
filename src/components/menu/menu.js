@@ -14,8 +14,16 @@ class Menu extends Component {
    
     createdActive = () => {
         const {toggle} = this.state;
-        this.setState({toggle:!toggle})
+            this.setState({toggle:!toggle})
     }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.createdActive);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.createdActive);
+    }
+
 
     onUpdadeSearch = (e) => {
         const onSearchName = e.target.value;
