@@ -3,7 +3,7 @@ import Header from '../header/header';
 import Menu from '../menu/menu';
 import Gallery from '../gallery/gallery';
 import Page from '../page/page';
-import './style.css';
+import './styleTheme.css';
 import './app.css';
 
 
@@ -17,7 +17,7 @@ const App = (props) => {
   const [gallery, setGallery] = useState([]); // Галерея
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); // Странница начинается с 1, пагинация
-  const [countriesPerPage] = useState(9); //Количество картин на странице
+  const [countriesPerPage, setCountriesPerPage] = useState(9); //Количество картин на странице
 
   const [filterName, setFilterName] = useState(gallery); // Стейт с галереей
   const [onSearchName, setOnSearchName] = useState(''); // Поиск по названию
@@ -54,7 +54,12 @@ const App = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[gallery, onSearchName, onSearchAutor, onSearchLocation, onSearchFrom, onSearchBefore]);
 
-  // Поиск по названию
+  useEffect(() => { 
+    resizeGallery()
+  },[gallery]);
+
+
+  // Поиск по фильтрам
   const onUpdadeSearch = (onSearchName) => {
     setOnSearchName(onSearchName)
   }
@@ -92,12 +97,33 @@ const App = (props) => {
   const nextPage = () => setCurrentPage( prev => prev + 1)
   const prevPage = () => setCurrentPage( prev => prev - 1)
   const firstPage = () => setCurrentPage( prev => (prev = 1))
-  const lastPage = () => setCurrentPage( prev => prev = (Math.ceil((gallery.length)/countriesPerPage)))
-  const totalPage = (Math.ceil(gallery.length/countriesPerPage))
+  const lastPage = () => setCurrentPage( prev => prev = (Math.ceil((filterName.length)/countriesPerPage)))
+  const totalPage = (Math.ceil(filterName.length/countriesPerPage))
 
   const onThemeChange = () => {
     setToggle(!toggle);
   }
+
+  // Количество картин на страннице
+  const resizeGallery = () => {
+    if (window.innerWidth < 321) {
+      setCountriesPerPage(6)
+    } else if (window.innerWidth < 769 && window.innerWidth > 321) {
+      setCountriesPerPage(8)
+    }
+  } 
+
+  // useEffect(() => { //Попробуем потом
+  //   const resizeGallery = () => {
+  //     if (window.innerWidth < 769 && window.innerWidth > 321) {
+  //       setCountriesPerPage(8)
+  //     } else if (window.innerWidth < 320) {
+  //       setCountriesPerPage(6)
+  //     }
+  //   }
+  //   window.addEventListener("resize", resizeGallery);
+  //   resizeGallery();
+  // },[]);
 
     return (
         <div className={`${toggle ? "light-theme" : "dark-theme"}`}>

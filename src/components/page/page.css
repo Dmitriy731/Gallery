@@ -45,7 +45,7 @@ button svg path {
 .page {
     margin: 0 auto;
     margin-top: 45px;
-    width: 1140px;
+    max-width: 1140px;
     padding-bottom: 95px
 ;
 }
@@ -86,4 +86,20 @@ button svg path {
 .page__pagination-item_active a{
     color: var(--main-color);
     background-color: var(--two-color) !important;
+}
+
+@media (min-width: 280px) {
+    .page__wrapper {
+        margin: 0 auto;
+    }
+}
+@media (min-width: 321px) {
+    .page {
+        padding: 0 34px;
+        padding-bottom: 54px
+        ;
+    }
+    .page__wrapper {
+        margin: 0;
+    }
 }

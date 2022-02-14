@@ -128,3 +128,70 @@
 .menu__panel_select__indicator-separator {
     display: none;
 }
+.menu__panel_select__indicator svg path{
+    fill: var(--two-color);
+}
+.menu__panel_indicator svg path {
+    fill: var(--two-color);
+}
+
+
+@media (min-width: 280px) {
+    .menu {
+        width: 280px;
+    }
+    .menu__form {
+        flex-direction: column;
+        height: 225px;
+    }
+    .menu__panel, .menu__panel_select {
+        width: 280px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+}
+@media (min-width: 321px) {
+    .menu {
+        width: 100%;
+    }
+    .menu__form {
+        width: 100%;
+        flex-direction: column;
+        height: 225px;
+
+    }
+    .menu__panel, .menu__panel_select {
+        width: calc(100% - 68px);
+        margin-top: 15px;
+    }
+}
+@media (min-width: 768px) {
+    .menu {
+        width: 100%;
+    }
+    .menu__form {
+        flex-direction: row;
+        height: 45px;
+        width: calc(100% - 68px);
+        padding: 0 34px;
+    }
+    .menu__panel, .menu__panel_select {
+        width: calc(25% - 20px);
+        margin: 0;
+    }
+}
+@media (min-width: 1025px) {
+    .menu {
+        width: 1024px;
+    }
+    .menu__form {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%
+    }
+}
+@media (min-width: 1140px) {
+    .menu {
+        width: 1140px;
+    }
+}

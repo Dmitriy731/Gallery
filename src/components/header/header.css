@@ -12,3 +12,26 @@
 .header_sun svg path {
     fill: var(--two-color);
 }
+@media (min-width: 280px) {
+    .header {
+        width: 240px;
+        padding: 20px;
+    }
+}
+@media (min-width: 320px) {
+    .header {
+        width: calc(100% - 68px);
+        padding: 0 34px;
+    }
+}
+@media (min-width: 768px) {
+    .header {
+        width: calc(100% - 84px);
+        padding: 0 42px;
+    }
+}
+@media (min-width: 1224px) {
+    .header {
+        width: 1140px;
+    }
+}

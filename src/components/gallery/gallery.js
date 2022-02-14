@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './galery.css'
+import './gallery.css'
 
 const Gallery = ({gallery, loading, author, location}) => {
     

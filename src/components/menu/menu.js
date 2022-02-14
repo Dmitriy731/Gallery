@@ -1,29 +1,29 @@
-import { Component } from 'react';
+import * as React from 'react';
 import Select from 'react-select';
-import './menu.css';
 import CustomStyle from './customStyle';
 import DropdownIndicator from './dropdownIndicator';
+import './menu.css';
 
-class Menu extends Component {
+
+class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             toggle: false,
         }
     }
-   
+    myRef = React.createRef();
+
     createdActive = () => {
-        const {toggle} = this.state;
-            this.setState({toggle:!toggle})
+        const { toggle } = this.state;
+        this.setState({toggle:!toggle})
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.createdActive);
+        document.addEventListener('click', (event) => {
+            if (!this.myRef.current.contains(event.target)) this.setState({toggle:false})
+        });
     }
-    componentWillUnmount() {
-        document.removeEventListener('mousedown', this.createdActive);
-    }
-
 
     onUpdadeSearch = (e) => {
         const onSearchName = e.target.value;
@@ -76,7 +76,7 @@ class Menu extends Component {
                             components={{ DropdownIndicator }}
                             onChange={this.onLocationSearch}>
                         </Select>
-                    <div className={`menu__panel ${toggle ? "menu__panel_created_active" : "menu__panel_created"}`}>
+                    <div ref={this.myRef} className={`menu__panel ${toggle ? "menu__panel_created_active" : "menu__panel_created"}`}>
                         <div className="menu__panel_title"
                         onClick={() => {this.createdActive()}}>
                             <div className="menu__panel_descr">Created</div>
