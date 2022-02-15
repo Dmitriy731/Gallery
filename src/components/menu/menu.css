@@ -83,6 +83,7 @@
     background-color: #EFEFEF;;
     border-radius: 8px;
     color: var(--main-color);
+    z-index: 0;
 }
 .menu__panel_select__option:hover {
     background-color: var(--two-color) !important;
@@ -139,15 +140,20 @@
 @media (min-width: 280px) {
     .menu {
         width: 280px;
+        min-height: 225px;
     }
     .menu__form {
         flex-direction: column;
-        height: 225px;
+        min-height: 225px;
     }
-    .menu__panel, .menu__panel_select {
+    .menu__panel, .menu__panel, .menu__panel_select {
+        height: 45px;
         width: 280px;
         margin: 0 auto;
         margin-top: 15px;
+    }
+    .menu__panel_created_active {
+        height: 130px;
     }
 }
 @media (min-width: 321px) {
